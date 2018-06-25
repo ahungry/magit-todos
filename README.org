@@ -22,13 +22,17 @@ This package displays keyword entries from source code comments and Org files in
 
 [[screenshots/matrix.png]]
 
-Org headings can optionally be fontified as such (this shows sorting by filename, then keyword, then buffer position):
+Org headings can optionally be fontified as such, and sorting can be customized (this shows sorting by filename, then keyword, then buffer position):
 
 [[screenshots/org.png]]
 
-Sorting can be customized.  This shows sorting by keyword, then filename, then buffer position:
+Items can also be automatically grouped in a customizable way, which can be helpful in large repos:
 
-[[screenshots/sort-keyword-filename-position.png]]
+[[screenshots/emacs-grouped.png]]
+
+This shows grouping items by the first path component, then keyword, then filename, and with optional keyword header fontification:
+
+[[screenshots/emacs-grouped-by-path.png]]
 
 ** Installation
 :PROPERTIES:
@@ -43,11 +47,13 @@ Install these required packages:
 
 -  =a=
 -  =anaphora=
+-  =async=
 -  =dash=
 -  =f=
 -  =hl-todo=
--  =kv=
 -  =magit=
+-  =pcre2el=
+-  =s=
 
 Then put this file in your =load-path=, and put this in your init file:
 
@@ -61,13 +67,13 @@ Run =magit-todos-mode=, then open a Magit status buffer.
 
 ** Tips
 
-You can customize settings in the =magit-todos= group.
-
-For example, in the Org repo, there are false positives for =next= in the =testing= directory's test files.  You could use ~add-dir-local-variable~ to set ~magit-todos-ignore-directories~ to ~"testing"~, and none of the files in that directory would be scanned for items.
++  Customize settings in the =magit-todos= group.
++  Jump to the to-do list in a Magit status buffer by pressing @@html:<kbd>@@j T@@html:</kbd>@@.
 
 ** Credits
 
-This package was inspired by [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]].
++  This package was inspired by [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]].
++  The =ag= support was made much simpler by the great [[https://github.com/joddie/pcre2el][pcre2el]] package by Jon Oddie.
 
 ** License
 :PROPERTIES:
